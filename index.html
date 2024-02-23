@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gradiant Card</title>
+  <style>
+  @property --rotate {
+  syntax: "<angle>";
+  initial-value: 102deg;
+  inherits: false;
+}
+body {
+  padding: 0;
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+  box-sizing: border-box;
+}
+.card {
+  background: #363d5c;
+  min-width: 16vw;
+  height: 50vh;
+  position: relative;
+  border-radius: 1rem;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  font-size: 1.5em;
+  color: #363d5c;
+  cursor: pointer;
+  font-family: cursive;
+}
+.card:hover {
+  color:aqua;
+  transition: color 2s;
+}
+.card:hover:before, .card:hover:after {
+  animation: none;
+  opacity: 0;
+}
+.card::before {
+  content: "";
+  width: 104%;
+  height: 102%;
+  border-radius: 1rem;
+  background-image: linear-gradient(
+  var(--rotate)
+    , #5ddcff, #3c67e3,#e84a4a);
+    position: absolute;
+    z-index: -1;
+    animation: spin 2.5s linear infinite;
+}
+.card::after {
+  position: absolute;
+  content: "";
+  background-image: linear-gradient(
+    var(--rotate)
+    , #5ddcff, #3c67e3, #ec601a);
+    opacity: 1;
+  transition: opacity .5s;
+  animation: spin 2s linear infinite;
+}
+@keyframes spin {
+  0% {
+    --rotate: 0deg;
+  }
+  100% {
+    --rotate: 360deg;
+  }
+}
+  </style>
+</head>
+<body>
+  <div class="card">
+    Keep Shine
+  </div>
+</body>
+</html>
